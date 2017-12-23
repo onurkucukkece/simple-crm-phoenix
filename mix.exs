@@ -42,7 +42,8 @@ defmodule Dand.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:phoenix_slime, "~> 0.9.0"},
-      {:guardian, "~> 1.0"}
+      {:guardian, "~> 1.0"},
+      {:comeonin, "~> 2.4"}
     ]
   end
 
