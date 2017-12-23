@@ -2,5 +2,4 @@ h2 New Ticket
 
 = render "form.html", Map.put(assigns, :action, ticket_path(@conn, :create))
 
-span 
-	= link "Back", to: ticket_path(@conn, :index)
+span = link "Back", to: ticket_path(@conn, :index)
