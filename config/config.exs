@@ -32,3 +32,13 @@ config :phoenix, :template_engines,
    slime: PhoenixSlime.Engine
 
 config :phoenix_slime, :use_slim_extension, true
+
+# Guardian configuration
+# config :guardian, Guardian,
+#   allowed_algos: ["HS512"],
+#   verify_module: Guardian.JWT,
+#   issuer: DandWeb,
+#   ttl: { 30, :days},
+#   verify_issuer: true,
+#   secret_key: "DASDASdasdasd",
+#   serializer: DandWeb.GuardianSerializer
