@@ -1,0 +1,14 @@
+= form_for @changeset, @action, fn f ->
+  = if @changeset.action do
+    .alert.alert-danger
+      p Oops, something went wrong! Please check the errors below.
+  .form-group
+    = label f, :subject, class: "control-label"
+    = text_input f, :subject, class: "form-control"
+    = error_tag f, :subject
+  .form-group
+    = label f, :message, class: "control-label"
+    = textarea f, :message, class: "form-control"
+    = error_tag f, :message
+  .form-group
+    = submit "Submit", class: "btn btn-primary"

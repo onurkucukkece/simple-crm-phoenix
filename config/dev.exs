@@ -37,7 +37,7 @@ config :dand, DandWeb.Endpoint,
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/dand_web/views/.*(ex)$},
-      ~r{lib/dand_web/templates/.*(eex)$}
+      ~r{lib/dand_web/templates/.*(eex|slim|slime)$}
     ]
   ]
 
