@@ -16,6 +16,7 @@ defmodule DandWeb.Router do
   scope "/", DandWeb do
     pipe_through :browser # Use the default browser stack
 
+    resources "/users", UserController
     resources "/tickets", TicketController
     get "/", PageController, :index
   end
