@@ -1,32 +1,42 @@
 defmodule DandWeb.Router do
   use DandWeb, :router
 
+  pipeline :auth do
+    plug Dand.Accounts.Pipeline
+  end
+
+  pipeline :ensure_auth do
+    plug Guardian.Plug.EnsureAuthenticated
+  end
+ 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    # plug Guardian.Plug.VerifySession
-    # plug Guardian.Plug.LoadResource
   end
 
-  pipeline :browser_auth do
-    plug Guardian.Plug.VerifySession
-    plug Guardian.Plug.EnsureAuthenticated, handler: DandWeb.Token
-    plug Guardian.Plug.LoadResource
-  end
   pipeline :api do
     plug :accepts, ["json"]
   end
 
+  # Maybe logged in scope
   scope "/", DandWeb do
-    pipe_through :browser # Use the default browser stack
+    pipe_through [:browser, :auth]
+    get "/", PageController, :index
+    post "/", PageController, :login
+    post "/logout", PageController, :logout
+  end
+
+  # Definitely logged in scope
+  scope "/", DandWeb do
+    pipe_through [:browser, :auth, :ensure_auth]
+    get "/secret", PageController, :secret
 
     resources "/users", UserController
     resources "/tickets", TicketController
-    get "/", PageController, :index
-  end
+  end  
 
   # Other scopes may use custom stacks.
   # scope "/api", DandWeb do
