@@ -2,12 +2,12 @@ defmodule Dand.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
   alias Dand.Accounts.User
+  alias Comeonin.Bcrypt
 
 
   schema "users" do
     field :email, :string
-    field :password, :string, virtual: true
-    field :password_hash, :string
+    field :password, :string
 
     timestamps()
   end
@@ -15,26 +15,15 @@ defmodule Dand.Accounts.User do
   @doc false
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:email])
-    |> validate_required([:email])
+    |> cast(attrs, [:email, :password])
+    |> validate_required([:email, :password])
     |> validate_format(:email, ~r/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+    |> put_pass_hash()
   end
 
-  def registration_changeset(%User{} = user, attrs) do
-    user
-    |> changeset(attrs)
-    |> cast(attrs, [:password])
-    |> validate_length(:password, min: 6)
-    |> put_password_hash()
+  defp put_pass_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
+    change(changeset, password: Bcrypt.hashpwsalt(password))
   end
 
-  defp put_password_hash(changeset) do
-    case changeset do
-      %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
-        put_change(changeset, :password_hash,   
-                   Comeonin.Bcrypt.hashpwsalt(pass))
-      _ ->
-        changeset  
-    end
-  end
+  defp put_pass_hash(changeset), do: changeset
 end

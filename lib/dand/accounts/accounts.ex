@@ -51,7 +51,7 @@ defmodule Dand.Accounts do
   """
   def create_user(attrs \\ %{}) do
     %User{}
-    |> User.registration_changeset(attrs)
+    |> User.changeset(attrs)
     |> Repo.insert()
   end
 
@@ -69,7 +69,7 @@ defmodule Dand.Accounts do
   """
   def update_user(%User{} = user, attrs) do
     user
-    |> User.registration_changeset(attrs)
+    |> User.changeset(attrs)
     |> Repo.update()
   end
 
@@ -99,6 +99,6 @@ defmodule Dand.Accounts do
 
   """
   def change_user(%User{} = user) do
-    User.registration_changeset(user, %{})
+    User.changeset(user, %{})
   end
 end
