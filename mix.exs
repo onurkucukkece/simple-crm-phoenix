@@ -43,8 +43,8 @@ defmodule Dand.Mixfile do
       {:cowboy, "~> 1.0"},
       {:phoenix_slime, "~> 0.9.0"},
       {:guardian, "~> 1.0"},
-      {:comeonin, "~> 2.4"}
-    ]
+      {:comeonin, "~> 4.0"},
+      {:bcrypt_elixir, "~> 0.12"}    ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
