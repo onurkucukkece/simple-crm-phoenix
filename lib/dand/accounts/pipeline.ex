@@ -1,6 +1,6 @@
 defmodule Dand.Accounts.Pipeline do
   use Guardian.Plug.Pipeline,
-    otp_app: :auth_ex,
+    otp_app: :dand,
     error_handler: Dand.Accounts.ErrorHandler,
     module: Dand.Accounts.Guardian
   # If there is a session token, validate it

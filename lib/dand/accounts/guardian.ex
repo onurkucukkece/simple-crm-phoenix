@@ -1,5 +1,5 @@
 defmodule Dand.Accounts.Guardian do
-  use Guardian, otp_app: :auth_ex
+  use Guardian, otp_app: :dand
 
   alias Dand.Accounts
 
