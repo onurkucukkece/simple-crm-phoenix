@@ -36,12 +36,4 @@ config :phoenix_slime, :use_slim_extension, true
 # Guardian configuration
 config :dand, Dand.Accounts.Guardian,
   issuer: "Dand", # Name of your app/company/product
-  secret_key: "3voyLHsr3CKP3ljdNAtDE6cJljEh+q5HEDreSJfA7gv066jUkCdu0E1XYglOTFAP" # Replace this with the output of the mix command
-# config :guardian, Guardian,
-#   allowed_algos: ["HS512"],
-#   verify_module: Guardian.JWT,
-#   issuer: DandWeb,
-#   ttl: { 30, :days},
-#   verify_issuer: true,
-#   secret_key: "DASDASdasdasd",
-#   serializer: DandWeb.GuardianSerializer
+  secret_key: "hereissomekey,justfornow!"
