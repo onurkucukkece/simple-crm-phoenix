@@ -1,0 +1,10 @@
+h2 Show Ticket
+ul
+  li
+    strong = "Subject: #{@ticket.subject}"
+  li
+    strong = "Message: #{@ticket.message}"
+  li
+    strong = "Owner: #{@ticket.owner.email}"
+span = link "Edit", to: ticket_path(@conn, :edit, @ticket)
+span = link "Back", to: ticket_path(@conn, :index)
