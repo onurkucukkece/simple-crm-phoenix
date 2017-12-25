@@ -15,7 +15,8 @@ defmodule DandWeb.TicketController do
   end
 
   def create(conn, %{"ticket" => ticket_params}) do
-    case Requests.create_ticket(ticket_params) do
+    current_user = Guardian.Plug.current_resource(conn)
+    case Requests.create_ticket(Map.put(ticket_params, "owner_id", current_user.id)) do
       {:ok, ticket} ->
         conn
         |> put_flash(:info, "Ticket created successfully.")
