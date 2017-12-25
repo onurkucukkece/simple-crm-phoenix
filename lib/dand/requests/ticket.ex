@@ -8,13 +8,14 @@ defmodule Dand.Requests.Ticket do
     field :message, :string
     field :subject, :string
 
+    belongs_to :owner, Dand.Accounts.User
     timestamps()
   end
 
   @doc false
   def changeset(%Ticket{} = ticket, attrs) do
     ticket
-    |> cast(attrs, [:subject, :message])
-    |> validate_required([:subject, :message])
+    |> cast(attrs, [:subject, :message, :owner_id])
+    |> validate_required([:subject, :message, :owner_id])
   end
 end
