@@ -35,7 +35,7 @@ defmodule Dand.Requests do
       ** (Ecto.NoResultsError)
 
   """
-  def get_ticket!(id), do: Repo.get!(Ticket, id)
+  def get_ticket!(id), do: Repo.get!(Ticket, id)|> Repo.preload([:owner])
 
   @doc """
   Creates a ticket.
