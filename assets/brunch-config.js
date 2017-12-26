@@ -2,10 +2,7 @@ exports.config = {
   // See http://brunch.io/#documentation for docs.
   files: {
     javascripts: {
-      joinTo: {
-        "js/app.js": /^(js|node_modules)/,
-        "js/materialize.min.js": /^(priv\/static\/js)/,
-      }
+      joinTo: "js/app.js"
 
       // To use a separate vendor.js bundle, specify two files path
       // http://brunch.io/docs/config#-files-
@@ -23,13 +20,7 @@ exports.config = {
       // }
     },
     stylesheets: {
-      joinTo: {
-        "css/app.css": /^(css)/,
-        "css/materialize.min.css": /^(priv\/static\/css)/,
-      },
-      order: {
-        after: ["css/app.css"] // concat app.css last
-      }
+      joinTo: "css/app.css"
     },
     templates: {
       joinTo: "js/app.js"
