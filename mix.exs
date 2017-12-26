@@ -44,7 +44,9 @@ defmodule Dand.Mixfile do
       {:phoenix_slime, "~> 0.9.0"},
       {:guardian, "~> 1.0"},
       {:comeonin, "~> 4.0"},
-      {:bcrypt_elixir, "~> 0.12"}    ]
+      {:bcrypt_elixir, "~> 0.12"},
+      {:materialize, "~> 0.1.1", github: "onurkucukkece/ex_materialize", branch: "feature/phoenix1.3"}
+    ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
