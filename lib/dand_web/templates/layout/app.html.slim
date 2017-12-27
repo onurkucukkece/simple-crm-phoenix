@@ -8,7 +8,7 @@ html lang="en"
     meta content="" name="author"
     title Hello Dand!
     link rel="stylesheet" href="#{static_path(@conn, "/css/app.css")}"
-    link rel="stylesheet" href="#{static_path(@conn, "/css/materialize.css")}"
+    link rel="stylesheet" href="#{static_path(@conn, "/css/materialize.min.css")}"
   body
     .container
       header.header
@@ -22,5 +22,5 @@ html lang="en"
       main role="main" 
        = render @view_module, @view_template, assigns
     script src="#{static_path(@conn, "/js/app.js")}"
-    script src="#{static_path(@conn, "/js/materialize.js")}"
+    script src="#{static_path(@conn, "/js/materialize.min.js")}"
     script src="#{static_path(@conn, "/js/global.js")}"
