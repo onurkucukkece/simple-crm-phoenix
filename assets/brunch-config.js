@@ -4,8 +4,7 @@ exports.config = {
     javascripts: {
       joinTo: {
         "js/app.js": /^(js)|(node_modules)/,
-        "js/materialize.min.js": ["vendor/materialize/js/materialize.min.js"],
-        "js/global.js": ["js/global.js"],
+        "js/materialize.min.js": ["vendor/materialize/js/materialize.min.js"]
       }
 
       // To use a separate vendor.js bundle, specify two files path
