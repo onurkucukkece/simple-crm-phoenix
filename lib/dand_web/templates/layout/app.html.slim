@@ -10,41 +10,10 @@ html lang="en"
     link rel="stylesheet" href="#{static_path(@conn, "/css/app.css")}"
     link rel="stylesheet" href="#{static_path(@conn, "/css/materialize.min.css")}"
   body
-    nav
-      .nav-wrapper
-        a.brand-logo href="#!"  Logo
-        a.button-collapse data-activates="mobile-demo" href="#" 
-          i.material-icons menu
-        ul.right.hide-on-med-and-down
-          li
-            a href="sass.html"  Sass
-          li
-            a href="badges.html"  Components
-          li
-            a href="collapsible.html"  Javascript
-          li
-            a href="mobile.html"  Mobile
-        ul#mobile-demo.side-nav
-          li
-            a href="sass.html"  Sass
-          li
-            a href="badges.html"  Components
-          li
-            a href="collapsible.html"  Javascript
-          li
-            a href="mobile.html"  Mobile
-      
-
-      header.header
-        nav role="navigation" 
-          ul.nav.nav-pills.pull-right
-            li
-              a href="http://www.phoenixframework.org/docs"  Get Started
-        span.logo
-      p.alert.alert-info role="alert"  = get_flash(@conn, :info)
-      p.alert.alert-danger role="alert"  = get_flash(@conn, :error)
-      main role="main" 
-       = render @view_module, @view_template, assigns
+    = render DandWeb.SharedView, "header.html", maybe_user: @maybe_user
+    main
+      = render @view_module, @view_template, assigns
+    = render DandWeb.SharedView, "footer.html"
     script src="#{static_path(@conn, "/js/app.js")}"
     script src="#{static_path(@conn, "/js/materialize.min.js")}"
     javascript:
