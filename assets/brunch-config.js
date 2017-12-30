@@ -25,7 +25,7 @@ exports.config = {
     stylesheets: {
       joinTo: {
         "css/app.css": /^(css)/,
-        "css/materialize.min.css": ["vendor/materialize/css/materialize.min.css"],
+        "css/materialize.css": ["vendor/materialize/css/materialize.css"],
       },
       order: {
         after: ["web/static/css/app.css"] // concat app.css last
