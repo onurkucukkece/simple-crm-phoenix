@@ -44,7 +44,8 @@ defmodule Dand.Mixfile do
       {:phoenix_slime, "~> 0.9.0"},
       {:guardian, "~> 1.0"},
       {:comeonin, "~> 4.0"},
-      {:bcrypt_elixir, "~> 0.12"}
+      {:bcrypt_elixir, "~> 0.12"},
+      {:materialize_sass, "~> 0.1.1"}
     ]
   end
 
