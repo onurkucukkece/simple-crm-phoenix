@@ -8,7 +8,6 @@ html lang="en"
     meta content="" name="author"
     title Hello Dand!
     link rel="stylesheet" href="#{static_path(@conn, "/css/app.css")}"
-    link rel="stylesheet" href="#{static_path(@conn, "/css/materialize.min.css")}"
   body
     = render DandWeb.SharedView, "header.html", maybe_user: @maybe_user
     main
@@ -18,4 +17,3 @@ html lang="en"
     script src="#{static_path(@conn, "/js/materialize.min.js")}"
     javascript:
       require("js/navigation");
-    
