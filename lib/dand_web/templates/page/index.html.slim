@@ -1,16 +1,19 @@
-h2 Login Page
-= if @maybe_user == nil do
-  = form_for @changeset, @action, fn f ->
-    .form-group
-      = label f, :email, class: "control-label"
-      = text_input f, :email, class: "form-control"
-      = error_tag f, :email
-    .form-group
-      = label f, :password, class: "control-label"
-      = password_input f, :password, class: "form-control"
-      = error_tag f, :password
-    .form-group
-      = submit "Submit", class: "btn btn-primary"
-- else
-  h1 = "Hello #{@maybe_user.email}"
-  span = link "Logout", to: page_path(@conn, :logout), method: :post
+.container
+  .row
+    .col.s12.input-field
+      h2 Login Page
+        = if @maybe_user == nil do
+          = form_for @changeset, @action, fn f ->
+            .input-field
+              = text_input f, :email, class: "form-control"
+              = label f, :email, class: "control-label"
+              = error_tag f, :email
+            .input-field
+              = password_input f, :password, class: "form-control"
+              = label f, :password, class: "control-label"
+              = error_tag f, :password
+            .input-field
+              = submit "Submit", class: "btn btn-primary"
+        - else
+          h1 = "Hello #{@maybe_user.email}"
+          span = link "Logout", to: page_path(@conn, :logout), method: :post

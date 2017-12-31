@@ -1,0 +1,9 @@
+header
+  nav
+    .nav-wrapper.container
+      = "Site logo here"
+      = if @maybe_user == nil do
+        a.button-collapse data-activates="mobile-demo" href="#" 
+          i.material-icons menu
+          / = render 'application/navigation/navigation'
+          / = render 'application/navigation/navigation_mobile'
