@@ -1,0 +1,69 @@
+@import "vendor/materialize/sass/components/color";
+$primary-color:color('blue-grey', 'lighten-1') !default;
+$primary-color-light:false !default;
+$primary-color-dark:false !default;
+@if not $primary-color-light {
+    $primary-color-light:lighten($primary-color, 15%);
+}
+@if not $primary-color-dark {
+    $primary-color-dark:darken($primary-color, 15%);
+}
+$secondary-color:color('blue-grey', 'lighten-3') !default;
+$success-color:color('green', 'base') !default;
+$error-color:color('red', 'base') !default;
+$link-color:color("lime", "darken-2") !default;
+
+@import "vendor/materialize/sass/materialize";
+
+body {
+  background-color: #fcfcfc;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  h1{
+    font-size: 2.2rem;
+  }
+  h2{
+    font-size: 1.8rem;
+  }
+  h3{
+    font-size: 1.6rem;
+  }
+  a:hover{
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+  }
+  
+  .ajax-closer{
+    cursor:pointer;
+  }
+
+  .row#accounts{
+    .col{
+      padding:0 !important;
+    }
+  }
+  
+  main{
+    flex: 1 0 auto;
+  }
+    
+  footer.page-footer{
+    padding-top:0;
+    margin-top:0;
+  }
+  
+  #feedback-form{
+    textarea{
+      height: inherit;
+      border-color:#ccc;
+      outline:0;
+    }
+    i.btn{
+      display:block;
+      input{
+        width: 100%;
+      }
+    }
+  }
+}

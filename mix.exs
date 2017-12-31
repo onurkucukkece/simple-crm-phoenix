@@ -45,7 +45,7 @@ defmodule Dand.Mixfile do
       {:guardian, "~> 1.0"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 0.12"},
-      {:materialize, "~> 0.1.1", github: "onurkucukkece/ex_materialize", branch: "feature/phoenix1.3"}
+      {:materialize_sass, "~> 0.1.3"}
     ]
   end
 
