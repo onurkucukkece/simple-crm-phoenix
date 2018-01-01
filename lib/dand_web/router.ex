@@ -29,6 +29,13 @@ defmodule DandWeb.Router do
     post "/logout", PageController, :logout
   end
 
+  scope "/auth", DandWeb do
+    pipe_through :browser
+    
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
+  end
+
   # Definitely logged in scope
   scope "/", DandWeb do
     pipe_through [:browser, :auth, :ensure_auth]
