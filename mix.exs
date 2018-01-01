@@ -20,7 +20,7 @@ defmodule Dand.Mixfile do
   def application do
     [
       mod: {Dand.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :ueberauth_microsoft],
     ]
   end
 
@@ -45,7 +45,8 @@ defmodule Dand.Mixfile do
       {:guardian, "~> 1.0"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 0.12"},
-      {:materialize_sass, "~> 0.1.3"}
+      {:materialize_sass, "~> 0.1.3"},
+      {:ueberauth_microsoft, "~> 0.3"}
     ]
   end
 

@@ -37,3 +37,12 @@ config :phoenix_slime, :use_slim_extension, true
 config :dand, Dand.Accounts.Guardian,
   issuer: "Dand", # Name of your app/company/product
   secret_key: "hereissomekey,justfornow!"
+
+config :ueberauth, Ueberauth,
+  providers: [
+    microsoft: {Ueberauth.Strategy.Microsoft, []}
+  ]
+
+config :ueberauth, Ueberauth.Strategy.Microsoft.OAuth,
+  client_id: System.get_env("MICROSOFT_CLIENT_ID"),
+  client_secret: System.get_env("MICROSOFT_CLIENT_SECRET")
