@@ -45,4 +45,5 @@ config :ueberauth, Ueberauth,
 
 config :ueberauth, Ueberauth.Strategy.Microsoft.OAuth,
   client_id: System.get_env("MICROSOFT_CLIENT_ID"),
-  client_secret: System.get_env("MICROSOFT_CLIENT_SECRET")
+  client_secret: System.get_env("MICROSOFT_CLIENT_SECRET"),
+  tenant: System.get_env("MICROSOFT_TENANT")
