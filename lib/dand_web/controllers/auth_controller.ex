@@ -14,6 +14,8 @@ defmodule DandWeb.AuthController do
     |> put_flash(:info, "You have been logged out!")
     |> configure_session(drop: true)
     |> redirect(to: "/")
+    # render(conn, "request.html", callback_url: Helpers.callback_url(conn, [response_type: "code id_token",
+    # response_mode: "form_post"]))
   end
 
   def callback(%{assigns: %{ueberauth_failure: _fails}} = conn, _params) do
