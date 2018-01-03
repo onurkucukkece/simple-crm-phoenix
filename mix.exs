@@ -46,7 +46,7 @@ defmodule Dand.Mixfile do
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 0.12"},
       {:materialize_sass, "~> 0.1.3"},
-      {:ueberauth_microsoft, "~> 0.3"}
+      {:ueberauth_microsoft, "~> 0.3", path: "../ueberauth_microsoft"}
     ]
   end
 
