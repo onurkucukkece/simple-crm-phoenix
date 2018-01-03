@@ -13,8 +13,11 @@ defmodule DandWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
-    plug :protect_from_forgery
     plug :put_secure_browser_headers
+  end
+
+  pipeline :security do
+    plug :protect_from_forgery
   end
 
   pipeline :api do
@@ -31,9 +34,14 @@ defmodule DandWeb.Router do
 
   scope "/auth", DandWeb do
     pipe_through :browser
+
+    post "/:provider/callback", AuthController, :callback
+  end
+
+  scope "/auth", DandWeb do
+    pipe_through [:browser, :security]
     
     get "/:provider", AuthController, :request
-    get "/:provider/callback", AuthController, :callback
   end
 
   # Definitely logged in scope
