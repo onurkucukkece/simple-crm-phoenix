@@ -40,7 +40,7 @@ config :dand, Dand.Accounts.Guardian,
 
 config :ueberauth, Ueberauth,
   providers: [
-    microsoft: {Ueberauth.Strategy.Microsoft, []}
+    microsoft: {Ueberauth.Strategy.Microsoft, [callback_methods: ["POST"]]}
   ]
 
 config :ueberauth, Ueberauth.Strategy.Microsoft.OAuth,
