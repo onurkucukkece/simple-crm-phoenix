@@ -20,7 +20,7 @@ defmodule Dand.Mixfile do
   def application do
     [
       mod: {Dand.Application, []},
-      extra_applications: [:logger, :runtime_tools, :ueberauth_microsoft],
+      extra_applications: [:logger, :runtime_tools],
     ]
   end
 
@@ -46,7 +46,7 @@ defmodule Dand.Mixfile do
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 0.12"},
       {:materialize_sass, "~> 0.1.3"},
-      {:ueberauth_microsoft, "~> 0.3", path: "../ueberauth_microsoft"}
+      {:oauth_azure_activedirectory, "~> 0.1.0-beta", path: "../oauth_azure_activedirectory"}
     ]
   end
 

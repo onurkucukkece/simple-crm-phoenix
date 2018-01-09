@@ -1,9 +1,6 @@
 defmodule DandWeb.AuthController do
   use DandWeb, :controller
 
-  plug Ueberauth
-
-  alias Ueberauth.Strategy.Helpers
 
   def request(conn, _params) do
     render(conn, "request.html", callback_url: Helpers.callback_url(conn))
@@ -16,12 +13,6 @@ defmodule DandWeb.AuthController do
     |> redirect(to: "/")
     # render(conn, "request.html", callback_url: Helpers.callback_url(conn, [response_type: "code id_token",
     # response_mode: "form_post"]))
-  end
-
-  def callback(%{assigns: %{ueberauth_failure: _fails}} = conn, _params) do
-    conn
-    |> put_flash(:error, "Failed to authenticate.")
-    |> redirect(to: "/")
   end
 
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
