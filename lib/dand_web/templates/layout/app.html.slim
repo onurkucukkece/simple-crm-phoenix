@@ -9,11 +9,9 @@ html lang="en"
     title Hello Dand!
     link rel="stylesheet" href="#{static_path(@conn, "/css/app.css")}"
   body
-    = render DandWeb.SharedView, "header.html", maybe_user: @maybe_user
+    / = render DandWeb.SharedView, "header.html", maybe_user: @maybe_user
     main
       = render @view_module, @view_template, assigns
-      = if get_flash(@conn, :error) do
-        p = get_flash(@conn, :error)
     = render DandWeb.SharedView, "footer.html"
     script src="#{static_path(@conn, "/js/app.js")}"
     script src="#{static_path(@conn, "/js/materialize.min.js")}"
