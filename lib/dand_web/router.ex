@@ -27,8 +27,9 @@ defmodule DandWeb.Router do
   # Maybe logged in scope
   scope "/", DandWeb do
     pipe_through [:browser, :auth]
-    get "/", PageController, :index
-    post "/", PageController, :login
+    
+    get "/login", PageController, :login
+    # post "/", PageController, :login
     post "/logout", PageController, :logout
   end
 
@@ -49,6 +50,7 @@ defmodule DandWeb.Router do
     pipe_through [:browser, :auth, :ensure_auth]
     get "/secret", PageController, :secret
 
+    get "/", PageController, :index
     resources "/users", UserController
     resources "/tickets", TicketController
   end  
