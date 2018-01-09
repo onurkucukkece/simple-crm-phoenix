@@ -1,9 +1,10 @@
 defmodule Dand.Accounts.ErrorHandler do
-  import Plug.Conn
+	import Plug.Conn
+  	
   def auth_error(conn, {type, _reason}, _opts) do
-    body = to_string(type)
+    body = to_string(_reason)
     conn
-    |> put_resp_content_type("text/plain")
-    |> send_resp(401, body)
+	  	|> Phoenix.Controller.redirect(to: "/login", method: "get")
+	  	|> halt
   end
 end
