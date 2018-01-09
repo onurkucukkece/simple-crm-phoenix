@@ -4,23 +4,25 @@ defmodule DandWeb.PageController do
 	alias Dand.Accounts
   alias Dand.Accounts.User
   alias Dand.Accounts.Guardian
+  alias DandWeb.Router.Helpers
 
+  import DandWeb.Router.Helpers
   def index(conn, _params) do
     changeset = Accounts.change_user(%User{})
-    maybe_user = Guardian.Plug.current_resource(conn)
-    message = if maybe_user != nil do
-      "Someone is logged in"
+    current_user = Guardian.Plug.current_resource(conn)
+    
+    if current_user != nil do
+      conn
+      |> redirect(to: page_path(conn, :login))
     else
-      "No one is logged in"
+      conn
+      |> render("index.html", changeset: changeset, action: page_path(conn, :login), current_user: current_user)
     end
-    conn
-      |> put_flash(:info, message)
-      |> render("index.html", changeset: changeset, action: page_path(conn, :login), maybe_user: maybe_user)
   end
 
-  def login(conn, %{"user" => %{"email" => email, "password" => password}}) do
-    Accounts.authenticate_user(email, password)
-    |> login_reply(conn)
+  def login(conn, params) do
+    changeset = Accounts.change_user(%User{})
+    conn |> render("login.html", changeset: changeset)
   end
 
   defp login_reply({:error, error}, conn) do

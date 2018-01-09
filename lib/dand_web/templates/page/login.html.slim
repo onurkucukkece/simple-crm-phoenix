@@ -1,0 +1,14 @@
+/ = form_for @changeset, @action, fn f ->
+/   .input-field
+/     = text_input f, :email, class: "form-control"
+/     = label f, :email, class: "control-label"
+/     = error_tag f, :email
+/   .input-field
+/     = password_input f, :password, class: "form-control"
+/     = label f, :password, class: "control-label"
+/     = error_tag f, :password
+/   .input-field
+/     = submit "Submit", class: "btn btn-primary"
+
+
+p = link "Logout", to: page_path(@conn, :logout), method: :post
