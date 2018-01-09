@@ -1,9 +1,13 @@
 defmodule DandWeb.AuthController do
   use DandWeb, :controller
 
+  alias Dand.Accounts
+  alias Dand.Accounts.User
+  alias Dand.Accounts.Guardian
+  alias OauthAzureActivedirectory.Client
 
   def request(conn, _params) do
-    render(conn, "request.html", callback_url: Helpers.callback_url(conn))
+    redirect conn, external: Client.authorize_url!(_params)
   end
 
   def delete(conn, _params) do
@@ -15,12 +19,15 @@ defmodule DandWeb.AuthController do
     # response_mode: "form_post"]))
   end
 
-  def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
-    case Dand.Accounts.User.find_or_create(auth) do
+  def callback(conn, _params) do
+  # def callback(%{assigns: %{azuread_auth: auth}} = conn, _params) do
+    {:ok, jwt} = Client.process_callback!(conn)
+    case Accounts.find_or_create_user(jwt) do
       {:ok, user} ->
         conn
-        |> put_flash(:info, "Successfully authenticated.")
+        |> put_flash(:success, "Successfully authenticated.")
         |> put_session(:current_user, user)
+        |> Guardian.Plug.sign_in(user)
         |> redirect(to: "/")
       {:error, reason} ->
         conn
