@@ -121,8 +121,8 @@ defmodule Dand.Accounts do
   def find_or_create_user(jwt) do
     email = jwt[:upn]
     query = from u in User, where: u.email == ^email
-    case Repo.one(query) do
-      user -> {:ok, user}
+    case Repo.all(query) do
+      [user] -> {:ok, user}
       [] -> create_user(%{email: email, password: SecureRandom.base64(8)})
     end
   end
