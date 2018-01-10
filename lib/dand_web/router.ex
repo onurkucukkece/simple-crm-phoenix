@@ -16,7 +16,7 @@ defmodule DandWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :security do
+  pipeline :forgery_protect do
     plug :protect_from_forgery
   end
 
@@ -26,7 +26,7 @@ defmodule DandWeb.Router do
 
   # Maybe logged in scope
   scope "/", DandWeb do
-    pipe_through [:browser, :auth]
+    pipe_through [:browser, :auth, :forgery_protect]
     
     get "/login", PageController, :login
     # post "/", PageController, :login
@@ -40,14 +40,14 @@ defmodule DandWeb.Router do
   end
 
   scope "/auth", DandWeb do
-    pipe_through [:browser, :security]
+    pipe_through [:browser]
     
     get "/:provider", AuthController, :request
   end
 
   # Definitely logged in scope
   scope "/", DandWeb do
-    pipe_through [:browser, :auth, :ensure_auth]
+    pipe_through [:browser, :auth, :ensure_auth, :forgery_protect]
     get "/secret", PageController, :secret
 
     get "/", PageController, :index
