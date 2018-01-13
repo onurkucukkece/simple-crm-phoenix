@@ -22,10 +22,6 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-# Import environment specific config. This must remain at the bottom
-# of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
-
 # Slim configuraiton
 config :phoenix, :template_engines,
     slim: PhoenixSlime.Engine,
@@ -42,4 +38,8 @@ config :oauth_azure_activedirectory, OauthAzureActivedirectory.Client,
   client_id: System.get_env("MICROSOFT_CLIENT_ID"),
   client_secret: System.get_env("MICROSOFT_CLIENT_SECRET"),
   tenant: System.get_env("MICROSOFT_TENANT"),
-  redirect_uri: "http://localhost:4000/auth/azureactivedirectory/callback"
+  redirect_uri: System.get_env("MICROSOFT_REDIRECT_URL")
+
+# Import environment specific config. This must remain at the bottom
+# of this file so it overrides the configuration defined above.
+import_config "#{Mix.env}.exs"

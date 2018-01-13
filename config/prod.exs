@@ -15,8 +15,13 @@ use Mix.Config
 # which you typically run after static files are built.
 config :dand, DandWeb.Endpoint,
   load_from_system_env: true,
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  url: [host: "dnd.nmq.digital", port: 80],
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  force_ssl: [hsts: true],
+  https: [:inet6,
+          port: 443,
+          keyfile: System.get_env("DND_SSL_KEY_PATH"),
+          certfile: System.get_env("DND_SSL_CERT_PATH")]
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -61,4 +66,14 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
+config :dand, DandWeb.Endpoint,
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
+
+# Configure your database
+config :dand, Dand.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: System.get_env("DB_USERNAME"),
+  password: System.get_env("DB_PASSWORD"),
+  database: System.get_env("DB_NAME"),
+  pool_size: 15
+
