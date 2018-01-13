@@ -46,7 +46,7 @@ defmodule Dand.Mixfile do
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 0.12"},
       {:materialize_sass, "~> 0.1.3"},
-      {:oauth_azure_activedirectory, "~> 0.1.0-beta2"}
+      {:oauth_azure_activedirectory, "~> 0.1.0-alpha2"}
     ]
   end
 
