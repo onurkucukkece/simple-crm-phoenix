@@ -20,7 +20,7 @@ defmodule Dand.Mixfile do
   def application do
     [
       mod: {Dand.Application, []},
-      extra_applications: [:logger, :runtime_tools, :edeliver],
+      extra_applications: [:logger, :runtime_tools, :edeliver, :inets],
     ]
   end
 

@@ -47,7 +47,7 @@ end
 release :dand do
   set version: current_version(:dand)
   set applications: [
-    :runtime_tools, :httpc
+    :runtime_tools
   ]
 end
 
