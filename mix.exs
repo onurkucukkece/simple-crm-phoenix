@@ -46,7 +46,7 @@ defmodule Dand.Mixfile do
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 0.12"},
       {:materialize_sass, "~> 0.1.3"},
-      {:oauth_azure_activedirectory, "~> 0.1.0-beta3", git: "https://github.com/onurkucukkece/oauth_azure_activedirectory.git", branch: "feature/lib_assets"},
+      {:oauth_azure_activedirectory, "~> 0.1.0-beta3", git: "https://github.com/onurkucukkece/oauth_azure_activedirectory.git", ref: "48c8e6f"},
       {:edeliver, ">= 1.4.4"},
       {:distillery, ">= 0.8.0", warn_missing: false}
     ]
