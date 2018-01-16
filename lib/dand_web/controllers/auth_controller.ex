@@ -20,7 +20,6 @@ defmodule DandWeb.AuthController do
   end
 
   def callback(conn, _params) do
-  # def callback(%{assigns: %{azuread_auth: auth}} = conn, _params) do
     {:ok, jwt} = Client.process_callback!(conn)
     case Accounts.find_or_create_user(jwt) do
       {:ok, user} ->
